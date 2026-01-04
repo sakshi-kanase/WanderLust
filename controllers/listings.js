@@ -27,6 +27,10 @@ module.exports.showListing = async (req, res) => {   //show route
 }
 
 module.exports.createListing = async (req, res) => {
+    if(!req.file){
+        req.flash("error","Image upload is required");
+        return res.redirect("/listing/new");
+    }
     let url = req.file.path;
     let filename = req.file.filename;
 
@@ -44,7 +48,7 @@ module.exports.renderEditForm = async (req, res) => {
     const listing = await Listing.findById(id);
     if(!listing){
         req.flash("error","Listing you requested for does not exit!");
-        res.redirect("/listings");
+        return res.redirect("/listings");
     }
 
     let originalImageUrl = listing.image.url;
