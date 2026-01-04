@@ -1,27 +1,3 @@
-//(changes kele ahet)
-
-// const mongoose = require("mongoose");
-// const Schema = mongoose.Schema;
-// let passportLocalMongoose = require("passport-local-mongoose");
-
-// // FIX for Node 22 — ensure plugin is a function 
-// passportLocalMongoose =
-//     typeof passportLocalMongoose === "function"
-//         ? passportLocalMongoose
-//         : passportLocalMongoose.default;
-
-// const userSchema = new Schema({
-//     email :{
-//         type:String,
-//         required:true
-//     }
-// });
-
-// userSchema.plugin(passportLocalMongoose);
-
-// module.exports = mongoose.model("User",userSchema);
-
-
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 

@@ -21,7 +21,6 @@ const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
 const { db } = require('./models/listing.js');
 
-// const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
 const dbUrl = process.env.ATLASDB_URL;
 
 main()
@@ -57,15 +56,15 @@ store.on("error",(err) =>{
 
 const sessionOptions ={
     store,
-    name:"session", //changes
+    name:"session",
    secret :"process.env.SECRET",
    resave:false,
    saveUninitialized:true,
    cookie:{
-    expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),//changes
+    expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
     maxAge: 7 * 24 * 60 * 60 * 1000,
     httpOnly:true,
-    secure:false, //changes
+    secure:false, 
    },
 };
 
@@ -91,16 +90,6 @@ app.use((req,res,next) =>{
     next();
 });
 
-//demo route
-// app.get("/demouser",async(req,res) =>{
-//     let fakeUser = new User({
-//         email: "student@gmail.com",
-//         username: "delta-student"
-//     });
-
-//     let registerUser = await User.register(fakeUser,"helloworld");
-//     res.send(registerUser);
-// })
 
 //routes
 app.use("/listings",listeningRouter);

@@ -23,7 +23,6 @@ module.exports.showListing = async (req, res) => {   //show route
         req.flash("error", "Listing you requested for does not exit!");
         res.redirect("/listings");
     }
-    // console.log(listing);
     return res.render("listings/show.ejs", { listing });
 }
 
