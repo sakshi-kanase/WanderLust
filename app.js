@@ -58,7 +58,7 @@ store.on("error",(err) =>{
 const sessionOptions ={
     store,
     name:"session",
-   secret :"process.env.SECRET",
+   secret :process.env.SECRET,
    resave:false,
    saveUninitialized:true,
    cookie:{
@@ -91,6 +91,10 @@ app.use((req,res,next) =>{
     next();
 });
 
+//Root route
+app.get("/",(req,res) =>{
+    res.redirect("/listings");
+});
 
 //routes
 app.use("/listings",listeningRouter);
@@ -99,6 +103,8 @@ app.use("/",userRouter);
 
 //middlewares(error handling)
 // app.all("*",(req,res,next)=>{
+    
+    //404 handler
 app.use((req, res, next) => {
     next(new ExpressError(404, "Page not found !"));
 })
